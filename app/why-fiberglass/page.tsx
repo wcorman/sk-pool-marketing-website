@@ -1,16 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Script from "next/script";
 import Footer from "../components/Footer";
-import { createElement } from "react";
-import type { DetailedHTMLProps, HTMLAttributes } from "react";
-
-type StripeBuyButtonProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
-
-const StripeBuyButton = (props: StripeBuyButtonProps) => {
-  return createElement("stripe-buy-button" as unknown as string, props);
-};
+import CTASection from "../components/CTASection";
 
 const benefits = [
   {
@@ -84,7 +76,7 @@ const WhyFiberglassPage = () => {
         </div>
       </section>
 
-      <section className="mx-auto mt-20 max-w-6xl px-6 md:px-8">
+      <section className="mx-auto mt-20 mb-20 max-w-6xl px-6 md:px-8">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">
             Why homeowners choose fiberglass pools.
@@ -126,7 +118,7 @@ const WhyFiberglassPage = () => {
         ))}
       </section>
 
-      <section className="mx-auto mt-20 max-w-6xl px-6 md:px-8">
+      <section className="mx-auto mt-20 mb-20 max-w-6xl px-6 md:px-8">
         <div className="grid items-center gap-12 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm shadow-slate-100 md:grid-cols-2 md:p-12">
           <div className="text-left">
             <h2 className="text-3xl font-semibold text-slate-900">
@@ -162,19 +154,7 @@ const WhyFiberglassPage = () => {
         </div>
       </section>
 
-      <section className="mx-auto mt-20 max-w-4xl rounded-3xl border border-sky-100 bg-sky-50 px-6 py-16 text-center shadow-sm shadow-sky-100 md:px-12">
-        <h2 className="text-3xl font-semibold text-slate-900">Bring a fiberglass pool home with SK Pool.</h2>
-        <p className="mt-4 text-lg text-slate-600">
-          Tell us about your dream backyard and we&apos;ll share layouts, timelines, and pricing that fit your goals.
-        </p>
-        <div className="mt-6 flex justify-center">
-          <Script async src="https://js.stripe.com/v3/buy-button.js" />
-          <StripeBuyButton
-            buy-button-id="buy_btn_1SS6eYEYa5qOXbfqIbAGUhw8"
-            publishable-key="pk_live_LgGJSFG3Xj8yb3le23h4QPLN"
-          />
-        </div>
-      </section>
+      <CTASection />
       <Footer />
     </main>
   );

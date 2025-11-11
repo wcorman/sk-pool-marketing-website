@@ -2,16 +2,40 @@
 
 import ImageWithFallback from "./ImageWithFallback";
 import Script from "next/script";
-import { createElement } from "react";
-import type { DetailedHTMLProps, HTMLAttributes } from "react";
+import { useCallback, useEffect } from "react";
 
-type StripeBuyButtonProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
-
-const StripeBuyButton = (props: StripeBuyButtonProps) => {
-  return createElement("stripe-buy-button" as unknown as string, props);
-};
+declare global {
+  interface Window {
+    Calendly?: {
+      initPopupWidget: (options: { url: string }) => void;
+    };
+  }
+}
 
 const CTASection = () => {
+  useEffect(() => {
+    const linkId = "calendly-widget-css";
+    if (document.getElementById(linkId)) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.id = linkId;
+    link.rel = "stylesheet";
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(link);
+  }, []);
+
+  const handleOpenCalendly = useCallback(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    window.Calendly?.initPopupWidget({
+      url: "https://calendly.com/skpool-info/30min",
+    });
+  }, []);
+
   return (
     <section className="relative py-32 px-4">
       {/* Background Image */}
@@ -36,11 +60,14 @@ const CTASection = () => {
           Schedule a paid consultation with our pool experts to discuss your vision, get personalized recommendations, and receive a detailed quote.
         </p>
         <div className="pt-4">
-          <Script async src="https://js.stripe.com/v3/buy-button.js" />
-          <StripeBuyButton
-            buy-button-id="buy_btn_1SS6eYEYa5qOXbfqIbAGUhw8"
-            publishable-key="pk_live_LgGJSFG3Xj8yb3le23h4QPLN"
-          />
+          <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
+          <button
+            type="button"
+            onClick={handleOpenCalendly}
+            className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-slate-900 transition hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            Book a Consultation
+          </button>
         </div>
       </div>
     </section>

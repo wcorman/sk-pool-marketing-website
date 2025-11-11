@@ -43,10 +43,10 @@ const ServicesSection = () => {
         {/* Header */}
         <div className="mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            All our Services.
+            Our Services
           </h2>
           <p className="text-lg text-gray-600">
-            Each pool is different. We can customize your service to fit your needs.
+            Each backyard is different. We can customize your service to fit your needs.
           </p>
         </div>
 

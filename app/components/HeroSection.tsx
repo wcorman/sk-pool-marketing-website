@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback } from "react";
+import { WavesLadder } from "lucide-react";
 import ImageWithFallback from "./ImageWithFallback";
 
 type ScrollIndicatorProps = {
@@ -104,14 +105,27 @@ const HeroSection = () => {
             <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
               Owning a pool is the fun part, let us handle the rest.
             </p>
-            <div>
-              <a
-                href="/request-quote"
-                className="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
-                tabIndex={0}
+            <div className="relative inline-flex">
+              <span
+                className="pointer-events-none absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-200/50 animate-ripple"
+                aria-hidden="true"
+                style={{ border: "2px solid #1e3a8a", width: "100px", height: "100px" }}
+              />
+              <span
+                className="pointer-events-none absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-100/40 animate-ripple"
+                style={{ animationDelay: "1.4s", border: "2px solid #1e3a8a", width: "100px", height: "100px" }}
+                aria-hidden="true"
+                
+              />
+              <button
+                type="button"
+                onClick={handleScrollToAbout}
+                className="relative inline-flex items-center px-5 py-3.5 bg-white border-2 border-blue-600 rounded-[50px] text-[#1e3a8a] font-semibold text-lg hover:bg-blue-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+                aria-label="Scroll to learn more about SK Pool"
               >
-                Request a Quote
-              </a>
+                <WavesLadder className="mr-2 h-10 w-10" aria-hidden="true" />
+                <span>Dive in to learn more</span>
+              </button>
             </div>
           </div>
 

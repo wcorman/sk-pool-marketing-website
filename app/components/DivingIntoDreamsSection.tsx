@@ -32,24 +32,10 @@ const DivingIntoDreamsSection = () => {
           {/* Right Side - Content */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 Designing Backyard Retreats{" "}
                 <span className="text-blue-600 inline-flex items-center">
                   The SK Pool Way
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-2 text-red-500"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                      fill="currentColor"
-                    />
-                  </svg>
                 </span>
               </h2>
             </div>
@@ -69,7 +55,7 @@ const DivingIntoDreamsSection = () => {
             </div>
             <div className="pt-4">
               <a
-                href="/learn-more"
+                href="/our-process"
                 className="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
                 tabIndex={0}
               >

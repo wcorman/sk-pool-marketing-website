@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Script from "next/script";
 import { useCallback, useEffect, useId, useState } from "react";
+import { CalendarCheck, PhoneCall } from "lucide-react";
 
 type NavItem = {
   label: string;
@@ -10,9 +12,10 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { label: "Pool Selector", href: "/pool-selector" },
-  { label: "Why Fiberglass?", href: "/why-fiberglass", hasDropdown: true },
-  { label: "Upgrades", href: "/upgrades", hasDropdown: true },
+  { label: "Our Process", href: "/our-process" },
+  { label: "Why Fiberglass?", href: "/why-fiberglass", hasDropdown: false },
+  { label: "Pricing", href: "/pricing" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 const ChevronDownIcon = () => (
@@ -35,39 +38,13 @@ const ChevronDownIcon = () => (
   </svg>
 );
 
-const PhoneIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="mr-2"
-    aria-hidden="true"
-  >
-    <path
-      d="M4 4C4 8.418 7.582 12 12 12H13C13.552 12 14 12.448 14 13V15.5C14 16.052 14.448 16.5 15 16.5H17.5C18.052 16.5 18.5 16.052 18.5 15.5V12.5C18.5 6.149 13.351 1 7 1H3.5C2.948 1 2.5 1.448 2.5 2V5.5C2.5 6.052 2.948 6.5 3.5 6.5H6.5C7.052 6.5 7.5 6.948 7.5 7.5V8.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M14 8.5C14.5 9 15 9.5 15.5 10.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      fill="none"
-    />
-    <path
-      d="M16 6.5C16.8 7.3 17.5 8.2 18 9.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      fill="none"
-    />
-  </svg>
-);
+declare global {
+  interface Window {
+    Calendly?: {
+      initPopupWidget: (options: { url: string }) => void;
+    };
+  }
+}
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -102,6 +79,29 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const linkId = "calendly-widget-css";
+    if (document.getElementById(linkId)) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.id = linkId;
+    link.rel = "stylesheet";
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(link);
+  }, []);
+
+  const handleOpenCalendly = useCallback(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    window.Calendly?.initPopupWidget({
+      url: "https://calendly.com/skpool-info/30min",
+    });
+  }, []);
+
   const handleToggleMenu = useCallback(() => {
     setIsMenuOpen((prevState) => !prevState);
   }, []);
@@ -116,6 +116,7 @@ const Navbar = () => {
       role="navigation"
       aria-label="Main navigation"
     >
+      <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
       {/* Logo Section */}
       <div className="flex items-center min-w-0 flex-shrink-0">
         <a
@@ -141,7 +142,7 @@ const Navbar = () => {
           <a
             key={item.href}
             href={item.href}
-            className="flex items-center text-[#1e3a8a] font-semibold text-[15px] hover:text-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1"
+            className="flex items-center text-[#1e3a8a] font-semibold text-lg hover:text-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1"
             tabIndex={0}
             aria-label={item.hasDropdown ? `${item.label} menu` : item.label}
             aria-expanded={item.hasDropdown ? false : undefined}
@@ -155,26 +156,26 @@ const Navbar = () => {
 
       {/* Phone CTA - Hidden on mobile, shown on desktop */}
       <div className="hidden lg:flex items-center min-w-0 flex-shrink-0">
-        <a
-          href="tel:8557807665"
+        <button
+          type="button"
+          onClick={handleOpenCalendly}
           className="flex items-center px-5 py-2.5 bg-white border-2 border-blue-600 rounded-[50px] text-[#1e3a8a] font-semibold text-[15px] hover:bg-blue-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
-          aria-label="Call us at 855-780-7665"
-          tabIndex={0}
+          aria-label="Book a consultation"
         >
-          <PhoneIcon />
-          <span>855.780.7665</span>
-        </a>
+          <CalendarCheck className="mr-2 h-5 w-5" aria-hidden="true" />
+          <span>Book a Consultation</span>
+        </button>
       </div>
 
       {/* Mobile Phone Button - Shown on mobile */}
-      <a
-        href="tel:8557807665"
+      <button
+        type="button"
+        onClick={handleOpenCalendly}
         className="lg:hidden ml-4 p-2.5 text-[#1e3a8a] hover:bg-blue-50 rounded-full border border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
-        aria-label="Call us at 855-780-7665"
-        tabIndex={0}
+        aria-label="Book a consultation"
       >
-        <PhoneIcon />
-      </a>
+        <CalendarCheck className="h-5 w-5" aria-hidden="true" />
+      </button>
 
       {/* Mobile Menu Button - Placeholder for future mobile menu */}
       <button
@@ -285,7 +286,7 @@ const Navbar = () => {
                 className="flex items-center justify-center gap-2 rounded-[50px] bg-[#1e3a8a] px-6 py-3 text-white font-semibold hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
                 onClick={handleCloseMenu}
               >
-                <PhoneIcon />
+                <PhoneCall className="h-5 w-5" aria-hidden="true" />
                 <span>Call 855.780.7665</span>
               </a>
             </div>
