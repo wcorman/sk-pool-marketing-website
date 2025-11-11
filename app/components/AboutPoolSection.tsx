@@ -25,7 +25,7 @@ const AboutPoolSection = () => {
         </div>
         <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
           Our founder Vince grew up in a Quebec family that has deep roots in manufacturing 
-          and installing swimming pools. After moving west, he founded SK Pool 
+          and installing swimming pools. After moving west to Saskatoon, he founded SK Pool 
           to continue that tradition here in Saskatchewan — placing the same care, 
           honesty, and craftsmanship into every project we take on.
         </p>

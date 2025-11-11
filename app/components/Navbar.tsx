@@ -16,6 +16,7 @@ const navItems: NavItem[] = [
   { label: "Why Fiberglass?", href: "/why-fiberglass", hasDropdown: false },
   { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const ChevronDownIcon = () => (
@@ -281,14 +282,15 @@ const Navbar = () => {
               ))}
             </div>
             <div className="px-6 pb-6">
-              <a
-                href="tel:8557807665"
-                className="flex items-center justify-center gap-2 rounded-[50px] bg-[#1e3a8a] px-6 py-3 text-white font-semibold hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
-                onClick={handleCloseMenu}
-              >
-                <PhoneCall className="h-5 w-5" aria-hidden="true" />
-                <span>Call 855.780.7665</span>
-              </a>
+            <button
+              type="button"
+              onClick={handleOpenCalendly}
+              className="flex items-center px-5 py-2.5 bg-white border-2 border-blue-600 rounded-[50px] text-[#1e3a8a] font-semibold text-[15px] hover:bg-blue-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+              aria-label="Book a consultation"
+            >
+              <CalendarCheck className="mr-2 h-5 w-5" aria-hidden="true" />
+              <span>Book a Consultation</span>
+            </button>
             </div>
           </div>
         </div>

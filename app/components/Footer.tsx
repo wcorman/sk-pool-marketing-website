@@ -2,6 +2,15 @@
 
 import Image from "next/image";
 
+const footerLinks = [
+  { label: "Home", href: "/" },
+  { label: "Our Process", href: "/our-process" },
+  { label: "Why Fiberglass?", href: "/why-fiberglass" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
+];
+
 const Footer = () => {
 
   return (
@@ -15,43 +24,16 @@ const Footer = () => {
               </a>
               <nav aria-label="Footer navigation">
                 <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-lg text-slate-700">
-                  <li>
-                    <a href="/" className="hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500">
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/about"
-                      className="hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-                    >
-                      About
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/pool"
-                      className="hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-                    >
-                      Pool
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/blog"
-                      className="hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-                    >
-                      Blog
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/contact"
-                      className="hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-                    >
-                      Contact
-                    </a>
-                  </li>
+                  {footerLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        className="hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </nav>
             </div>

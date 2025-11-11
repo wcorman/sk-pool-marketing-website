@@ -10,7 +10,7 @@ type ScrollIndicatorProps = {
 };
 
 const ScrollIndicator = ({ onClick }: ScrollIndicatorProps) => (
-  <div className="pointer-events-none absolute bottom-16 left-1/2 -translate-x-1/2 transform animate-bounce">
+  <div className="pointer-events-none absolute bottom-16 left-1/2 hidden -translate-x-1/2 transform animate-bounce lg:block">
     <button
       type="button"
       onClick={onClick}
