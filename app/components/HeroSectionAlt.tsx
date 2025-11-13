@@ -30,7 +30,7 @@ const HeroSectionAlt = () => {
         <div className="relative flex items-center justify-center px-8 lg:px-12 py-16 lg:py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #155a94 0%, #1E7ABF 40%)' }}>          
           {/* Content - White Card */}
           <div className="relative z-10 max-w-lg w-full bg-white rounded-2xl shadow-2xl p-8 lg:p-10 space-y-8 overflow-hidden">
-            <h1 className="text-4xl lg:text-5xl xl:text-5xl xl:leading-[60px] mb-0 font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl lg:text-5xl xl:text-5xl xl:leading-[60px] mb-4 lg:mb-0 font-bold text-gray-900 leading-tight">
             Owning a pool is the fun part,
               <span className="inline items-center gap-2 xl:leading-[60px] text-blue-600 font-extrabold">
                &nbsp;let us handle the rest.
@@ -43,7 +43,7 @@ const HeroSectionAlt = () => {
                 /> */}
               </span>
             </h1>
-            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed mb-6">
               
               Built for our climate, right here in{" "} <span className="inline-flex items-center gap-2 xl:leading-[70px] text-red-600 font-extrabold">
                 Canada
