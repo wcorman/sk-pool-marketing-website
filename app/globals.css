@@ -46,8 +46,39 @@ body {
   }
 }
 
+@keyframes rippleUpward {
+  0% {
+    transform: translateY(0) scaleY(1);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-80px) scaleY(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes waveFlow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-400px);
+  }
+}
+
 @layer utilities {
   .animate-ripple {
     animation: ripplePulse 3.6s ease-in-out infinite;
+  }
+  
+  .animate-ripple-upward {
+    animation: rippleUpward 3.6s ease-in-out infinite;
+  }
+  
+  .animate-wave-flow {
+    animation: waveFlow 8s linear infinite;
   }
 }

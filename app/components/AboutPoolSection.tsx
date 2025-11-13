@@ -29,7 +29,7 @@ const AboutPoolSection = () => {
           to continue that tradition here in Saskatchewan — placing the same care, 
           honesty, and craftsmanship into every project we take on.
         </p>
-        <div className="pt-2">
+        {/* <div className="pt-2">
           <a
             href="/about"
             className="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
@@ -37,7 +37,7 @@ const AboutPoolSection = () => {
           >
             Explore More
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

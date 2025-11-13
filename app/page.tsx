@@ -1,4 +1,5 @@
 import HeroSection from "./components/HeroSection";
+import HeroSectionAlt from "./components/HeroSectionAlt";
 import AboutPoolSection from "./components/AboutPoolSection";
 import ServicesSection from "./components/ServicesSection";
 import ProfessionalInstallationSection from "./components/ProfessionalInstallationSection";
@@ -10,7 +11,8 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <HeroSection />
+      {/* <HeroSection /> */}
+      <HeroSectionAlt />
       <AboutPoolSection />
       <ServicesSection />
       <ProfessionalInstallationSection />
