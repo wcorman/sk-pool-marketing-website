@@ -37,9 +37,9 @@ const ContactPage = () => {
           <span className="inline-flex w-fit items-center justify-center self-center rounded-full bg-white/10 px-4 py-1 text-sm font-medium uppercase tracking-wide">
             Contact
           </span>
-          <h1 className="text-4xl font-bold leading-tight md:text-5xl">Let’s map out your backyard.</h1>
+          <h1 className="text-4xl font-bold leading-tight md:text-5xl">We'd love to hear from you.</h1>
           <p className="text-lg text-slate-100">
-            Share a few details about your home, and the SK Pool team will follow up with layout ideas, timelines, and pricing tailored to Saskatchewan seasons.
+            Let us know how we can help.
           </p>
         </div>
       </section>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
 import { CalendarCheck, PhoneCall } from "lucide-react";
 
@@ -50,6 +51,7 @@ declare global {
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileMenuId = useId();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -139,20 +141,27 @@ const Navbar = () => {
 
       {/* Navigation Menu */}
       <div className="hidden lg:flex items-center gap-8 mx-8 flex-1 justify-center">
-        {navItems.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            className="flex items-center text-[#1e3a8a] font-semibold text-lg hover:text-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1"
-            tabIndex={0}
-            aria-label={item.hasDropdown ? `${item.label} menu` : item.label}
-            aria-expanded={item.hasDropdown ? false : undefined}
-            aria-haspopup={item.hasDropdown ? true : undefined}
-          >
-            {item.label}
-            {item.hasDropdown && <ChevronDownIcon />}
-          </a>
-        ))}
+        {navItems.map((item) => {
+          const isActive =
+            item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+          return (
+            <a
+              key={item.href}
+              href={item.href}
+              className={`flex items-center font-semibold text-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 ${
+                isActive ? "text-blue-900 underline underline-offset-4" : "text-[#1e3a8a] hover:text-blue-700"
+              }`}
+              tabIndex={0}
+              aria-label={item.hasDropdown ? `${item.label} menu` : item.label}
+              aria-expanded={item.hasDropdown ? false : undefined}
+              aria-haspopup={item.hasDropdown ? true : undefined}
+            >
+              {item.label}
+              {item.hasDropdown && <ChevronDownIcon />}
+            </a>
+          );
+        })}
       </div>
 
       {/* Phone CTA - Hidden on mobile, shown on desktop */}
@@ -268,18 +277,25 @@ const Navbar = () => {
               </button>
             </div>
             <div className="flex flex-col px-6 py-4 gap-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="flex items-center justify-between rounded-2xl px-4 py-3 text-[#1e3a8a] font-semibold text-base hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
-                  onClick={handleCloseMenu}
-                  role="menuitem"
-                >
-                  <span>{item.label}</span>
-                  {item.hasDropdown && <ChevronDownIcon />}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                const isActive =
+                  item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className={`flex items-center justify-between rounded-2xl px-4 py-3 font-semibold text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 ${
+                      isActive ? "bg-blue-50 text-blue-900" : "text-[#1e3a8a] hover:bg-blue-50"
+                    }`}
+                    onClick={handleCloseMenu}
+                    role="menuitem"
+                  >
+                    <span>{item.label}</span>
+                    {item.hasDropdown && <ChevronDownIcon />}
+                  </a>
+                );
+              })}
             </div>
             <div className="px-6 pb-6">
             <button

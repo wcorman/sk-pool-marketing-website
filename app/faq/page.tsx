@@ -111,7 +111,7 @@ const FAQPage = () => {
             Answers to your SK Pool questions.
           </h1>
           <p className="text-lg text-slate-100">
-            Whether you&apos;re planning your first pool or comparing options, these FAQs explain how our Canadian-made fiberglass installations work in Saskatchewan&apos;s climate.
+            Whether you&apos;re planning your first pool or comparing options, these FAQs explain how we bring your dream pool to life.
           </p>
         </div>
       </section>

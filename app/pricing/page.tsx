@@ -100,7 +100,7 @@ const PricingPage = () => {
             Pricing & Financing
           </span>
           <h1 className="text-4xl font-bold leading-tight md:text-5xl">
-            Plan your SK Pool investment with confidence.
+            Plan your investment with confidence.
           </h1>
           <p className="text-lg text-slate-100">
             We provide transparent pricing, financing options, and schedule milestones so you can dive in without surprises.
@@ -138,10 +138,12 @@ const PricingPage = () => {
                   </li>
                 ))}
               </ul>
-              <p className="text-sm text-slate-500">Pricing varies with site access, soil conditions, and upgrade selections.</p>
             </div>
           ))}
         </div>
+        <p className="mt-6 text-center text-xs text-slate-400">
+          Pricing varies with site access, soil conditions, and upgrade selections.
+        </p>
       </section>
 
       <section className="mx-auto mt-20 max-w-6xl px-6 md:px-8">

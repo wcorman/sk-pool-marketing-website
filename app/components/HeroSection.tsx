@@ -109,11 +109,11 @@ const HeroSection = () => {
               <span
                 className="pointer-events-none absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-200/50 animate-ripple"
                 aria-hidden="true"
-                style={{ border: "2px solid #1e3a8a", width: "100px", height: "100px" }}
+                style={{ border: "2px solid #1e3a8a", width: "100px", height: "100px", opacity: 0.4 }}
               />
               <span
                 className="pointer-events-none absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blue-100/40 animate-ripple"
-                style={{ animationDelay: "1.4s", border: "2px solid #1e3a8a", width: "100px", height: "100px" }}
+                style={{ animationDelay: "1.4s", border: "2px solid #1e3a8a", width: "100px", height: "100px", opacity: 0.2 }}
                 aria-hidden="true"
                 
               />
@@ -132,7 +132,7 @@ const HeroSection = () => {
           {/* Right Side - Image */}
           <div className="relative h-[400px] lg:h-[500px] xl:h-[600px] rounded-2xl overflow-hidden shadow-2xl order-1 lg:order-2">
             <ImageWithFallback
-              src="/images/Upsilon (8).jpg"
+              src="/images/thumbnail_image3.jpg"
               alt="Luxury infinity pool overlooking tropical landscape"
               fill
               className="object-cover"
@@ -142,7 +142,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <ScrollIndicator onClick={handleScrollToAbout} />
+      {/* <ScrollIndicator onClick={handleScrollToAbout} /> */}
     </section>
   );
 };

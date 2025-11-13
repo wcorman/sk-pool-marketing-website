@@ -33,9 +33,9 @@ const DivingIntoDreamsSection = () => {
           <div className="space-y-6">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Designing Backyard Retreats{" "}
+              Pool Design That Brings Your{" "}
                 <span className="text-blue-600 inline-flex items-center">
-                  The SK Pool Way
+                Family Together
                 </span>
               </h2>
             </div>

@@ -11,7 +11,7 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
-    quote: "Nice job. I'm happy! Friendly, reliable and thorough weekly service. A big change from my previous pool cleaning company.",
+    quote: "Nice job. I'm happy! Friendly, reliable and thorough service. Would definitely recommend for anyone looking for a pool.",
     author: "Alishaan Deol",
     backgroundImage: "/images/Epsilon (4).png",
   },
