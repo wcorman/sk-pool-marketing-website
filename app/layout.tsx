@@ -15,7 +15,36 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "SK Pool - Canadian Made Swimming Pools",
-  description: "SK Pool offers Canadian made swimming pools, fiberglass pools, and gunite pools.",
+  description: "SK Pool offers Canadian made swimming pools. We are a family owned and operated business that has been in the swimming pool industry for over 20 years.",
+  icons: {
+    icon: [
+      { url: "/images/favicon.ico" },
+      { url: "/images/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/images/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/images/apple-touch-icon.png" },
+    ],
+    other: [
+      {
+        rel: "android-chrome-192x192",
+        url: "/images/android-chrome-192x192.png",
+      },
+    ],
+  },
+  openGraph: {
+    title: "SK Pool - Canadian Made Swimming Pools",
+    description: "SK Pool offers Canadian made swimming pools. We are a family owned and operated business that has been in the swimming pool industry for over 20 years.",
+    images: [
+      {
+        url: "/images/featured.png",
+        width: 1200,
+        height: 630,
+        alt: "SK Pool - Canadian Made Swimming Pools",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
