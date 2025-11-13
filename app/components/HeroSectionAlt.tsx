@@ -213,15 +213,15 @@ const HeroSectionAlt = () => {
       ease: "power2.in", // Accelerates as it falls
     });
 
-    // Fade out as it disappears
+    // Fade out as it disappears - starts fading during the last part of the fall
     tl.to(
       stickmanRef.current,
       {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.5,
         ease: "power2.in",
       },
-      "-=0.3"
+      "-=0.6" // Start fading 0.5 seconds before the fall animation ends
     );
 
     animationRef.current = tl;
