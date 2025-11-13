@@ -13,7 +13,9 @@ const HeroSectionAlt = () => {
   const rightArmRef = useRef<SVGGElement>(null);
   const leftLegRef = useRef<SVGGElement>(null);
   const rightLegRef = useRef<SVGGElement>(null);
+  const floatingContainerRef = useRef<HTMLDivElement>(null);
   const [isOnCooldown, setIsOnCooldown] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const animationRef = useRef<gsap.core.Timeline | null>(null);
 
   const handleGetStarted = useCallback(() => {
@@ -234,23 +236,65 @@ const HeroSectionAlt = () => {
     };
   }, []);
 
-  // Auto-trigger animation on mobile devices on page load
+  // Auto-trigger animation on mobile devices when bottom of floating container enters view
   useEffect(() => {
     const isMobile = window.innerWidth < 1024; // Match lg breakpoint (mobile/tablet)
     
-    if (isMobile && buttonContainerRef.current && stickmanRef.current) {
-      // Small delay to ensure page is loaded and elements are ready
-      const timeoutId = setTimeout(() => {
-        if (buttonContainerRef.current && stickmanRef.current && !isOnCooldown) {
+    if (!isMobile || !floatingContainerRef.current || hasAnimated) {
+      return;
+    }
+
+    const checkBottomInView = () => {
+      if (!floatingContainerRef.current || hasAnimated) {
+        return;
+      }
+
+      const rect = floatingContainerRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      
+      // Check if the bottom of the container is visible (bottom edge is within viewport)
+      // rect.bottom is the distance from top of viewport to bottom of element
+      // We want to trigger when the bottom edge enters the viewport (becomes <= viewportHeight)
+      if (rect.bottom <= viewportHeight && rect.bottom > 0) {
+        if (buttonContainerRef.current && stickmanRef.current && !isOnCooldown && !hasAnimated) {
+          setHasAnimated(true);
           handleButtonHover();
         }
-      }, 500); // 500ms delay after page load
-      
-      return () => clearTimeout(timeoutId);
-    }
-    // Only run once on mount
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            checkBottomInView();
+          }
+        });
+      },
+      {
+        // Trigger when any part of the container is visible
+        rootMargin: '0px',
+        threshold: 0,
+      }
+    );
+
+    observer.observe(floatingContainerRef.current);
+
+    // Also check on scroll to catch the moment the bottom enters view
+    const handleScroll = () => {
+      if (!hasAnimated) {
+        checkBottomInView();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [hasAnimated, isOnCooldown]);
 
   return (
     <section className="relative min-h-[85vh] flex items-center overflow-hidden">
@@ -278,7 +322,7 @@ const HeroSectionAlt = () => {
           />
           
           {/* Content - White Card */}
-          <div className="relative z-10 max-w-lg w-full bg-white rounded-2xl shadow-2xl p-8 lg:p-10 space-y-8 overflow-hidden">
+          <div ref={floatingContainerRef} className="relative z-10 max-w-lg w-full bg-white rounded-2xl shadow-2xl p-8 lg:p-10 space-y-8 overflow-hidden">
             <h1 className="text-4xl lg:text-5xl xl:text-5xl xl:leading-[60px] mb-4 lg:mb-0 font-bold text-gray-900 leading-tight">
             Owning a pool is the fun part,
               <span className="inline items-center gap-2 xl:leading-[60px] text-blue-600 font-extrabold">
