@@ -93,7 +93,7 @@ const faqSections = [
       {
         question: "What’s included in an SK Pool project quote?",
         answer:
-          "Your quote covers design, permitting, excavation, fiberglass shell, equipment, plumbing, backfill, and standard decking. We also outline optional upgrades so you can plan a complete backyard project.",
+          "Your quote covers design, permitting, excavation, fiberglass shell, equipment, plumbing and backfill. We also outline optional upgrades so you can plan a complete backyard project.",
       },
     ],
   },

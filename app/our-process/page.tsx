@@ -16,7 +16,7 @@ const processSteps = [
   {
     title: "Site Preparation",
     description:
-      "SK Pool handles excavation, drainage, and insulation prep work, coordinating trades and inspections while protecting existing landscaping and access paths.",
+      "SK Pool handles excavation and drainage prep work, coordinating trades and inspections while protecting existing landscaping and access paths if possible.",
   },
   {
     title: "Pool Delivery & Set",
@@ -26,7 +26,7 @@ const processSteps = [
   {
     title: "Finishing Touches",
     description:
-      "We backfill, pour decking, hook up heating, and balance water chemistry. You choose exterior features like lighting, safety covers, or built-in spas.",
+      "We backfill and balance water chemistry.",
   },
   {
     title: "Orientation & Handover",
@@ -44,22 +44,22 @@ const milestoneDetails = [
   {
     title: "Day 3–10: Delivery in Transit",
     description:
-      "Your custom fiberglass pool is crafted and shipped from Quebec. This stage takes the most time but ensures unmatched Canadian quality.",
+      "Your custom fiberglass pool is delivered. This stage takes the most time but we assure you that it will be worth the wait.",
   },
   {
-    title: "Day 11–12: Dig & Prepare",
+    title: "During Delivery Window: Dig & Prepare",
     description:
-      "Excavation, drainage, and electrical prep take one to two days, setting the stage for a seamless install.",
+      "Excavation, drainage, and electrical prep happen within the 10–15 day delivery window so the site is ready the moment your pool arrives.",
   },
   {
     title: "Day 13: Installation Day",
     description:
-      "The crane sets your pool, plumbing is pressure-tested, and equipment is wired.",
+      "The crane sets your pool and equipment is wired.",
   },
   {
     title: "Day 14: Finish & Orient",
     description:
-      "Decking cures, landscaping ties in, and you receive hands-on training plus a service plan.",
+      "Landscaping ties in, and you receive hands-on training plus a service plan.",
   },
 ];
 

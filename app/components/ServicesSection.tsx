@@ -16,7 +16,7 @@ const services: Service[] = [
     alt: "Infinity pool by the sea",
   },
   {
-    title: "Above Ground Pools",
+    title: "Above-Ground Fiberglass Pools",
     image: "/images/above-ground.webp",
     alt: "Above ground pool in a sunny backyard",
     comingSoon: true,
@@ -30,6 +30,26 @@ const services: Service[] = [
     title: "Equipment Install",
     image: "/images/thumbnail_image3.jpg",
     alt: "Circular pool with lounge chairs",
+  },
+  {
+    title: "Pool Opening",
+    image: "/images/pool-photo.webp",
+    alt: "Technician removing a pool cover in spring",
+  },
+  {
+    title: "Pool Closing",
+    image: "/images/Upsilon (8).jpg",
+    alt: "Backyard pool prepared for winter",
+  },
+  {
+    title: "Vinyl Liner Replacement",
+    image: "/images/Upsilon (2).jpg",
+    alt: "Crew installing a new vinyl pool liner",
+  },
+  {
+    title: "Fiberglass Hot Tubs",
+    image: "/images/Square Spa (4).jpg",
+    alt: "Modern fiberglass hot tub on a deck",
   },
 ];
 

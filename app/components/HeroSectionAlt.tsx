@@ -221,7 +221,7 @@ const HeroSectionAlt = () => {
         duration: 0.5,
         ease: "power2.in",
       },
-      "-=0.6" // Start fading 0.5 seconds before the fall animation ends
+      "-=0.6" // Start fading 0.6 seconds before the fall animation ends
     );
 
     animationRef.current = tl;

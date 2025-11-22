@@ -34,41 +34,6 @@ const financingOptions = [
   },
 ];
 
-const projectTiers = [
-  {
-    title: "Essential Fiberglass Package",
-    price: "Starting at $90,000",
-    features: [
-      "Canadian-made fiberglass shell (12'–30' lengths)",
-      "Excavation, crane set, plumbing, backfill, and equipment pad",
-      "Energy-efficient pump, cartridge filter, and LED lighting",
-      "4' broom-finished concrete perimeter",
-      "Water testing, orientation, and first-month maintenance checklist",
-    ],
-  },
-  {
-    title: "Family Retreat Package",
-    price: "Starting at $105,000",
-    features: [
-      "All Essential Package inclusions",
-      "Built-in benches or tanning ledge fiberglass models",
-      "Extended stamped concrete or paver patio",
-      "Automation-ready equipment with Wi-Fi control",
-      "Custom lighting scenes and premium safety cover",
-    ],
-  },
-  {
-    title: "Four-Season Luxury Package",
-    price: "Starting at $125,000",
-    features: [
-      "Integrated spa or splash deck",
-      "Radiant deck heating or fire feature integration",
-      "Pergola or pavilion framing with lighting and audio pre-wire",
-      "Extended warranty coverage plus spring opening and fall closing for year one",
-    ],
-  },
-];
-
 const timelineHighlights = [
   {
     step: "Step 1",
@@ -80,7 +45,7 @@ const timelineHighlights = [
     step: "Step 2",
     title: "Proposal & Financing Alignment",
     description:
-      "Review your detailed proposal, choose a package, and lock in financing. We coordinate directly with lenders to provide project schedules and cost breakdowns.",
+      "Review your detailed proposal, choose a package, and lock-in payment terms. We coordinate directly with lenders to provide project schedules and cost breakdowns.",
   },
   {
     step: "Step 3",
@@ -113,37 +78,25 @@ const PricingPage = () => {
         </div>
       </section>
 
-      <section className="mx-auto mt-16 max-w-6xl px-6 md:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">Choose a package that matches your vision.</h2>
+      <section className="mx-auto mt-16 max-w-4xl px-6 text-center md:px-8">
+        <div className="rounded-3xl border border-slate-200 bg-white px-6 py-12 shadow-sm shadow-slate-100 md:px-16">
+          <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">Straightforward pricing ranges.</h2>
           <p className="mt-4 text-lg text-slate-600">
-            Every backyard is unique. These starting points show what&apos;s included with typical SK Pool builds in Saskatchewan.
+            Every SK Pool project is tailored to your yard, but most homeowners fall within these ranges when pairing fiberglass shells with custom landscaping.
           </p>
-        </div>
-        <div className="grid gap-6 lg:grid-cols-3">
-          {projectTiers.map((tier) => (
-            <div
-              key={tier.title}
-              className="flex h-full flex-col gap-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm shadow-slate-100 transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div>
-                <h3 className="text-2xl font-semibold text-slate-900">{tier.title}</h3>
-                <p className="mt-2 text-xl font-semibold text-sky-600">{tier.price}</p>
-              </div>
-              <ul className="flex flex-1 flex-col gap-3 text-base text-slate-600">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex gap-3">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-sky-500" aria-hidden="true" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="mt-10 space-y-6 text-left text-base text-slate-700">
+            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
+              <h3 className="text-xl font-semibold text-slate-900">Fiberglass pools</h3>
+              <p className="mt-2 text-slate-600">Range from $75,000 to $150,000.</p>
             </div>
-          ))}
+            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
+              <h3 className="text-xl font-semibold text-slate-900">Landscaping & outdoor living</h3>
+              <p className="mt-2 text-slate-600">
+                May range from $50,000 to $200,000+ depending on design complexity, hardscaping, and amenities.
+              </p>
+            </div>
+          </div>
         </div>
-        <p className="mt-6 text-center text-xs text-slate-400">
-          Pricing varies with site access, soil conditions, and upgrade selections.
-        </p>
       </section>
 
       <section className="mx-auto mt-20 max-w-6xl px-6 md:px-8">

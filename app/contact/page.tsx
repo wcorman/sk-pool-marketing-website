@@ -4,20 +4,8 @@ import Footer from "../components/Footer";
 
 const contactDetails = [
   {
-    label: "Call SK Pool",
-    value: "306.555.5555",
-    href: "tel:3065555555",
-    description: "Reach us Monday to Friday, 8am – 6pm CST for project inquiries or service support.",
-  },
-  {
-    label: "Email",
-    value: "info@skpool.ca",
-    href: "mailto:info@skpool.ca",
-    description: "Send site photos, plans, or questions anytime. We respond within one business day.",
-  },
-  {
-    label: "Service Area",
-    value: "Regina • Saskatoon • Moose Jaw • Prince Albert • Surrounding communities",
+    // label: "Service Area",
+    value: "Saskatoon • Regina • Moose Jaw • Prince Albert • Surrounding communities",
     description: "Mobile crews travel across Saskatchewan for installations, openings, and maintenance.",
   },
 ];
@@ -56,7 +44,7 @@ const ContactPage = () => {
 
           <aside className="space-y-8">
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm shadow-slate-100">
-              <h2 className="text-xl font-semibold text-slate-900">Connect directly</h2>
+              <h2 className="text-xl font-semibold text-slate-900">Service Area</h2>
               <div className="mt-4 space-y-5 text-base text-slate-600">
                 {contactDetails.map((detail) => (
                   <div key={detail.label}>

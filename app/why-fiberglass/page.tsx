@@ -33,7 +33,7 @@ const highlights = [
   {
     title: "Designs That Fit Your Backyard",
     description:
-      "From compact plunge pools to family-friendly options with built-in benches, we help you choose a shape that suits your space, lifestyle, and maintenance goals.",
+      "From compact plunge pools to family-friendly options with built-in benches and hot tubs, we help you choose a shape that suits your space, lifestyle, and maintenance goals.",
     image: "/images/thumbnail_image5.jpg",
     alt: "Modern backyard fiberglass pool with lounge chairs",
   },
