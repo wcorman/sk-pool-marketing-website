@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 
 const contactDetails = [
   {
-    // label: "Service Area",
     value: "Saskatoon • Regina • Moose Jaw • Prince Albert • Surrounding communities",
     description: "Mobile crews travel across Saskatchewan for installations, openings, and maintenance.",
   },
@@ -46,19 +45,9 @@ const ContactPage = () => {
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm shadow-slate-100">
               <h2 className="text-xl font-semibold text-slate-900">Service Area</h2>
               <div className="mt-4 space-y-5 text-base text-slate-600">
-                {contactDetails.map((detail) => (
-                  <div key={detail.label}>
-                    <p className="text-sm font-semibold uppercase tracking-wide text-sky-600">{detail.label}</p>
-                    {detail.href ? (
-                      <a
-                        href={detail.href}
-                        className="mt-1 block text-lg font-semibold text-slate-900 hover:text-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-                      >
-                        {detail.value}
-                      </a>
-                    ) : (
-                      <p className="mt-1 text-lg font-semibold text-slate-900">{detail.value}</p>
-                    )}
+                {contactDetails.map((detail, index) => (
+                  <div key={index}>
+                    <p className="mt-1 text-lg font-semibold text-slate-900">{detail.value}</p>
                     <p className="mt-2 text-sm text-slate-500">{detail.description}</p>
                   </div>
                 ))}
