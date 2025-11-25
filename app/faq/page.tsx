@@ -88,7 +88,7 @@ const faqSections = [
       {
         question: "Do you provide financing options?",
         answer:
-          "We partner with Canadian lenders who specialize in home improvement projects. We can connect you with financing options and help prepare supporting documents once we finalize your proposal.",
+          "We don't provide financing directly. However, many homeowners work with their bank or credit union to set up financing options that work best for their situation. We're happy to provide project details and timelines to support your financing application.",
       },
       {
         question: "What’s included in an SK Pool project quote?",

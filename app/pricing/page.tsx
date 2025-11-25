@@ -1,57 +1,24 @@
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
 
-const financingOptions = [
-  {
-    name: "Prairie Pool Financing",
-    term: "Up to 180 months",
-    rate: "Starting at 7.49% APR*",
-    details: [
-      "Fixed monthly payments tailored to seasonal income.",
-      "Works with SaskEnergy and SaskPower efficiency programs.",
-      "Fast approvals for borrowers across Saskatchewan.",
-    ],
-  },
-  {
-    name: "Home Equity Line of Credit",
-    term: "Flexible draw periods",
-    rate: "Prime + 0.75% (bank dependent)",
-    details: [
-      "Ideal for homeowners with existing equity in Regina, Saskatoon, and surrounding areas.",
-      "Interest-only payments available during the draw period.",
-      "Coordinate with your preferred credit union or bank.",
-    ],
-  },
-  {
-    name: "Seasonal Construction Loan",
-    term: "12 to 24 months",
-    rate: "Starting at 6.99% APR*",
-    details: [
-      "Short-term bridge financing to cover construction milestones.",
-      "No payment penalties for early payoff after project completion.",
-      "Available through partnered lenders familiar with SK Pool installations.",
-    ],
-  },
-];
-
 const timelineHighlights = [
   {
     step: "Step 1",
     title: "Discovery & Design",
     description:
-      "Share your backyard vision, budget goals, and financing preferences. SK Pool prepares a design layout and investment range that matches your priorities.",
+      "Share your backyard vision and budget goals. SK Pool prepares a design layout and investment range that matches your priorities.",
   },
   {
     step: "Step 2",
-    title: "Proposal & Financing Alignment",
+    title: "Proposal & Planning",
     description:
-      "Review your detailed proposal, choose a package, and lock-in payment terms. We coordinate directly with lenders to provide project schedules and cost breakdowns.",
+      "Review your detailed proposal, choose a package, and finalize payment terms. We provide project schedules and cost breakdowns to help you plan with your bank if needed.",
   },
   {
     step: "Step 3",
     title: "Construction & Completion",
     description:
-      "Installation moves quickly once the ground thaws. We finalize inspections, guide your first swim, and ensure your financing closes out with zero surprises.",
+      "Installation moves quickly once the ground thaws. We finalize inspections and guide your first swim so you can enjoy your pool right away.",
   },
 ];
 
@@ -62,18 +29,18 @@ const PricingPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-sky-900 via-sky-800 to-slate-900 opacity-90" />
         <div className="relative mx-auto flex max-w-5xl flex-col gap-6 px-6 py-24 text-center md:px-8">
           <span className="inline-flex w-fit items-center justify-center self-center rounded-full bg-white/10 px-4 py-1 text-sm font-medium uppercase tracking-wide">
-            Pricing & Financing
+            Pricing
           </span>
           <h1 className="text-4xl font-bold leading-tight md:text-5xl">
             Plan your investment with confidence.
           </h1>
           <p className="text-lg text-slate-100">
-            We provide transparent pricing, financing options, and schedule milestones so you can dive in without surprises.
+            We provide transparent pricing and schedule milestones so you can dive in without surprises.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm font-medium text-slate-200">
             <span className="rounded-full border border-white/30 px-4 py-1">Canadian-made pools</span>
-            <span className="rounded-full border border-white/30 px-4 py-1">Flexible financing</span>
-            <span className="rounded-full border border-white/30 px-4 py-1">Transparent timelines</span>
+            <span className="rounded-full border border-white/30 px-4 py-1">Transparent pricing</span>
+            <span className="rounded-full border border-white/30 px-4 py-1">Clear timelines</span>
           </div>
         </div>
       </section>
@@ -99,35 +66,13 @@ const PricingPage = () => {
         </div>
       </section>
 
-      <section className="mx-auto mt-20 max-w-6xl px-6 md:px-8">
-        <div className="grid gap-8 rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm shadow-slate-100 md:grid-cols-2 md:p-12">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">Financing that fits Saskatchewan homeowners.</h2>
+      <section className="mx-auto mt-20 max-w-4xl px-6 md:px-8">
+        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm shadow-slate-100 md:p-12">
+          <div className="space-y-4 text-center">
+            <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">Financing options</h2>
             <p className="text-base text-slate-600">
-              We partner with lenders who understand seasonal incomes, rural properties, and Prairie climate considerations. Choose flexible options that let you enjoy your pool now and pay over time.
+              We don't provide financing directly, but many homeowners work with their bank or credit union to set up financing options that work best for their situation. We're happy to provide project details and timelines to support your financing application.
             </p>
-            <p className="text-sm text-slate-500">
-              *Rates and approvals depend on credit profile, lender policies, and prevailing market conditions.
-            </p>
-          </div>
-          <div className="space-y-4">
-            {financingOptions.map((option) => (
-              <div key={option.name} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm shadow-slate-100">
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <h3 className="text-xl font-semibold text-slate-900">{option.name}</h3>
-                  <span className="text-sm font-medium text-sky-600">{option.term}</span>
-                </div>
-                <p className="mt-2 text-sm font-medium text-slate-500">{option.rate}</p>
-                <ul className="mt-4 space-y-2 text-base text-slate-600">
-                  {option.details.map((detail) => (
-                    <li key={detail} className="flex gap-3">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-500" aria-hidden="true" />
-                      <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -136,7 +81,7 @@ const PricingPage = () => {
         <div className="rounded-3xl border border-slate-200 bg-white px-6 py-12 shadow-sm shadow-slate-100 md:px-12">
           <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">From proposal to cannonball in three steps.</h2>
           <p className="mt-4 text-base text-slate-600">
-            Our process helps you understand costs, timelines, and financing milestones so you can plan confidently around Saskatchewan weather.
+            Our process helps you understand costs and timelines so you can plan confidently around Saskatchewan weather.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {timelineHighlights.map((item) => (

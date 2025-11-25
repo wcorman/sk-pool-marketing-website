@@ -32,7 +32,7 @@ const CTASection = () => {
     }
 
     window.Calendly?.initPopupWidget({
-      url: "https://calendly.com/skpool-info/30min",
+      url: "https://calendly.com/skpool-info/30min?utm_source=website",
     });
   }, []);
 

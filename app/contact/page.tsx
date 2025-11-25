@@ -10,7 +10,7 @@ const contactDetails = [
 ];
 
 const faqLinks = [
-  { label: "View pricing & financing", href: "/pricing" },
+  { label: "View pricing", href: "/pricing" },
   { label: "Explore our process", href: "/our-process" },
   { label: "Read FAQs", href: "/faq" },
 ];
