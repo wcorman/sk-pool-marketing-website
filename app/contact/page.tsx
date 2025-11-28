@@ -12,6 +12,7 @@ const contactDetails = [
 const faqLinks = [
   { label: "View pricing", href: "/pricing" },
   { label: "Explore our process", href: "/our-process" },
+  { label: "Browse pool designs", href: "/pool-selection" },
   { label: "Read FAQs", href: "/faq" },
 ];
 

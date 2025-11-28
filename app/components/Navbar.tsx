@@ -14,7 +14,7 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { label: "Our Process", href: "/our-process" },
-  { label: "Why Fiberglass?", href: "/why-fiberglass", hasDropdown: false },
+  { label: "Pool Selection", href: "/pool-selection" },
   { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
@@ -101,7 +101,7 @@ const Navbar = () => {
     }
 
     window.Calendly?.initPopupWidget({
-      url: "https://calendly.com/skpool-info/30min",
+      url: "https://calendly.com/skpool-info/30min?utm_source=website",
     });
   }, []);
 

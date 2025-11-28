@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 
-const LathamCarouselEmbed = () => {
+const LathamGridEmbed = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scriptLoadedRef = useRef(false);
 
@@ -30,29 +29,20 @@ const LathamCarouselEmbed = () => {
         // Use window.location.href to ensure proper URL string conversion
         a.src = u + '/' + w.location.href;
         m.parentNode.insertBefore(a, m);
-      })(window, document, 'script', 'https://www.lathamprositetool.com/wp-json/latham/v1/embed/3431/4/carousel', undefined, undefined);
+      })(window, document, 'script', 'https://www.lathamprositetool.com/wp-json/latham/v1/embed/3431/4/grid', undefined, undefined);
       scriptLoadedRef.current = true;
     } catch (error) {
-      console.error('Error loading Latham carousel:', error);
+      console.error('Error loading Latham grid:', error);
     }
   }, []);
 
   return (
     <section className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div id="latham-embed-3431-4-carousel" ref={containerRef}></div>
-        <div className="mt-16 text-center">
-          <Link
-            href="/pool-selection"
-            className="inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 text-base font-semibold text-white transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-          >
-            View All Pool Designs
-          </Link>
-        </div>
+        <div id="latham-embed-3431-4-grid" ref={containerRef}></div>
       </div>
     </section>
   );
 };
 
-export default LathamCarouselEmbed;
-
+export default LathamGridEmbed;
