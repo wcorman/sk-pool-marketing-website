@@ -12,22 +12,21 @@ const LathamGridEmbed = () => {
       return;
     }
 
-    // Check if script already exists to prevent duplicate loading
-    const existingScript = document.querySelector('script[src*="lathamprositetool.com"]');
-    if (existingScript) {
+    // Check if grid script already exists to prevent duplicate loading
+    // The script src will contain the grid endpoint URL
+    const existingGridScript = document.querySelector('script[src*="/embed/3431/4/grid"]');
+    if (existingGridScript) {
       scriptLoadedRef.current = true;
       return;
     }
 
-    // Execute the exact embed code as provided
-    // Note: Using window.location.href instead of d.location for proper string conversion
+    // Execute the embed code for grid - matching original embed format exactly
     try {
       (function(w: any, d: any, t: any, u: any, a: any, m: any) {
         a = d.createElement(t);
         m = d.getElementsByTagName(t)[0];
         a.async = 1;
-        // Use window.location.href to ensure proper URL string conversion
-        a.src = u + '/' + w.location.href;
+        a.src = u + '/' + d.location;
         m.parentNode.insertBefore(a, m);
       })(window, document, 'script', 'https://www.lathamprositetool.com/wp-json/latham/v1/embed/3431/4/grid', undefined, undefined);
       scriptLoadedRef.current = true;
