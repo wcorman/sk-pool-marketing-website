@@ -38,7 +38,7 @@ const services: Service[] = [
   },
   {
     title: "Pool Closing",
-    image: "/images/Upsilon (8).jpg",
+      image: "/images/closing.webp",
     alt: "Backyard pool prepared for winter",
   },
   {

@@ -5,7 +5,6 @@ import ServicesSection from "./components/ServicesSection";
 import ProfessionalInstallationSection from "./components/ProfessionalInstallationSection";
 import DivingIntoDreamsSection from "./components/DivingIntoDreamsSection";
 import LathamCarouselEmbed from "./components/LathamCarouselEmbed";
-import TestimonialsSection from "./components/TestimonialsSection";
 import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
 
@@ -19,7 +18,6 @@ export default function Home() {
       <ProfessionalInstallationSection />
       <DivingIntoDreamsSection />
       <LathamCarouselEmbed />
-      <TestimonialsSection />
       <CTASection />
       <Footer />
     </main>
