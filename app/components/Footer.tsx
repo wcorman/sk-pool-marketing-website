@@ -39,8 +39,9 @@ const Footer = () => {
               </nav>
             </div>
           </div>
-          <div className="mt-10 border-t border-slate-200 pt-6 text-sm text-slate-500 md:flex md:items-center md:justify-between">
+          <div className="mt-10 border-t border-slate-200 pt-6 text-sm text-slate-500">
             <p>Copyright © {new Date().getFullYear()} SK Pool. All rights reserved.</p>
+            {/* Social links hidden for now
             <div className="mt-4 flex flex-wrap items-center gap-6 md:mt-0">
               <a
                 href="https://facebook.com"
@@ -70,6 +71,7 @@ const Footer = () => {
                 LinkedIn
               </a>
             </div>
+            */}
           </div>
         </div>
       </div>
