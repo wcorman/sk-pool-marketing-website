@@ -559,8 +559,36 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
     <section className="w-full bg-slate-50">
       {/* Page Header */}
       {showHeader && (
-        <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-28">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-28 overflow-hidden">
+          {/* Pool pattern background */}
+          <div 
+            className="absolute inset-0 opacity-30 pointer-events-none"
+            style={{
+              backgroundImage: 'url(/images/pool-pattern.webp)',
+              backgroundRepeat: 'repeat',
+              backgroundSize: '400px 400px',
+              mixBlendMode: 'overlay',
+            }}
+          />
+          
+          {/* Subtle ripple circles */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div 
+              className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full border border-blue-400/20"
+              style={{
+                animation: 'rippleExpand 6s ease-out infinite',
+              }}
+            />
+            <div 
+              className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full border border-blue-300/20"
+              style={{
+                animation: 'rippleExpand 8s ease-out infinite',
+                animationDelay: '2s',
+              }}
+            />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold tracking-[0.2em] uppercase text-blue-400 mb-4">
                 Finish Selection
