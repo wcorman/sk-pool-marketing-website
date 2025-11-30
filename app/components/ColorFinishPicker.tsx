@@ -336,6 +336,7 @@ const ColorCard = ({ color, isSelected, onSelect, index }: ColorCardProps) => {
             fill
             className="object-cover"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            loading="lazy"
           />
         </div>
       </div>
@@ -581,6 +582,7 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority={selectedColor.id === POOL_COLORS[0].id}
+                loading={selectedColor.id === POOL_COLORS[0].id ? "eager" : "lazy"}
               />
             </div>
 
@@ -721,6 +723,7 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
                   fill
                   className="object-cover"
                   sizes="96px"
+                  loading="lazy"
                 />
                 {/* 3D depth effect with shadow */}
                 <div

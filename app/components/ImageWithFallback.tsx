@@ -12,6 +12,7 @@ type ImageWithFallbackProps = {
   className?: string;
   sizes?: string;
   priority?: boolean;
+  loading?: "lazy" | "eager";
 };
 
 const ImageWithFallback = ({
@@ -23,6 +24,7 @@ const ImageWithFallback = ({
   className = "",
   sizes,
   priority = false,
+  loading = "lazy",
 }: ImageWithFallbackProps) => {
   const [hasError, setHasError] = useState(false);
   const [imgSrc, setImgSrc] = useState(src);
@@ -78,6 +80,7 @@ const ImageWithFallback = ({
           src={imgSrc}
           alt={alt}
           className="w-full h-full object-cover"
+          loading={priority ? "eager" : loading}
           onError={handleError}
           onLoad={() => setHasError(false)}
           style={{ display: hasError ? "none" : "block" }}
@@ -101,6 +104,7 @@ const ImageWithFallback = ({
         width={width}
         height={height}
         className={className}
+        loading={priority ? "eager" : loading}
         onError={handleError}
         onLoad={() => setHasError(false)}
         style={{ display: hasError ? "none" : "block" }}
