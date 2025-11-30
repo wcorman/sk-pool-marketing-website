@@ -562,12 +562,12 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
         <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-28 overflow-hidden">
           {/* Pool pattern background */}
           <div 
-            className="absolute inset-0 opacity-30 pointer-events-none"
+            className="absolute inset-0 opacity-35 pointer-events-none"
             style={{
               backgroundImage: 'url(/images/pool-pattern.webp)',
               backgroundRepeat: 'repeat',
               backgroundSize: '400px 400px',
-              mixBlendMode: 'overlay',
+              mixBlendMode: 'soft-light',
             }}
           />
           
