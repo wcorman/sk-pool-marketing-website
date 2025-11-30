@@ -525,10 +525,10 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
 
   // Calculate 3D transform for swatch
   const swatchTransform = {
-    rotateX: mousePosition.y * 15, // Max 15 degrees
-    rotateY: mousePosition.x * 15, // Max 15 degrees
-    translateX: mousePosition.x * 8, // Max 8px
-    translateY: mousePosition.y * 8, // Max 8px
+    rotateX: mousePosition.y * 8, // Max 8 degrees
+    rotateY: mousePosition.x * 8, // Max 8 degrees
+    translateX: mousePosition.x * 4, // Max 4px
+    translateY: mousePosition.y * 4, // Max 4px
   };
 
   return (
@@ -541,14 +541,14 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
               <p className="text-sm font-semibold tracking-[0.2em] uppercase text-blue-400 mb-4">
                 Finish Selection
               </p>
-              <h1
+              <h2
                 className="text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight mb-6"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                style={{ fontFamily: "Arial, Helvetica, sans-serifserif" }}
               >
                 Choose Your Perfect
                 <br />
                 <span className="text-blue-400">Pool Finish</span>
-              </h1>
+              </h2>
               <p className="text-lg lg:text-xl text-slate-300 leading-relaxed">
                 Our Crystite finishes are designed to transform your backyard into
                 a stunning retreat. From classic elegance to crystalline sparkle,
@@ -668,12 +668,12 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
               </p>
 
               {/* Color name - Serif display font */}
-              <h2
+              <h3 
                 className="text-4xl lg:text-5xl font-light tracking-tight text-slate-900"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                style={{ fontFamily: "Arial, Helvetica, sans-serifserif" }}
               >
                 {selectedColor.name}
-              </h2>
+              </h3>
 
               {/* Description */}
               <p className="text-base lg:text-lg text-slate-600 leading-relaxed">
