@@ -1,5 +1,6 @@
 import HeroSection from "./components/HeroSection";
 import HeroSectionAlt from "./components/HeroSectionAlt";
+import ColorFinishPicker from "./components/ColorFinishPicker";
 import AboutPoolSection from "./components/AboutPoolSection";
 import ServicesSection from "./components/ServicesSection";
 import ProfessionalInstallationSection from "./components/ProfessionalInstallationSection";
@@ -18,6 +19,7 @@ export default function Home() {
       <ProfessionalInstallationSection />
       <DivingIntoDreamsSection />
       <LathamCarouselEmbed />
+      <ColorFinishPicker showColorGrid={false} showHeader={true} />
       <CTASection />
       <Footer />
     </main>
