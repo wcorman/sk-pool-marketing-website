@@ -44,6 +44,7 @@ const LathamCarouselEmbed = () => {
         <div className="mt-16 text-center">
           <Link
             href="/pool-selection"
+            scroll={true}
             className="inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 text-base font-semibold text-white transition hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             View All Pool Designs
