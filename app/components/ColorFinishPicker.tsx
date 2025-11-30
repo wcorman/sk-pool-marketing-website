@@ -368,6 +368,8 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
   const [selectedColor, setSelectedColor] = useState<PoolColor>(POOL_COLORS[0]);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isSwatchHovered, setIsSwatchHovered] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const rightPanelRef = useRef<HTMLDivElement>(null);
 
@@ -524,12 +526,33 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
     }
   }, []);
 
+  // Keyboard support for lightbox (ESC to close)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isLightboxOpen) {
+        setIsLightboxOpen(false);
+      }
+    };
+
+    if (isLightboxOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+      // Prevent body scroll when lightbox is open
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [isLightboxOpen]);
+
   // Calculate 3D transform for swatch
   const swatchTransform = {
     rotateX: mousePosition.y * 8, // Max 8 degrees
     rotateY: mousePosition.x * 8, // Max 8 degrees
     translateX: mousePosition.x * 4, // Max 4px
     translateY: mousePosition.y * 4, // Max 4px
+    scale: isSwatchHovered ? 1.15 : 1, // Scale up on hover
   };
 
   return (
@@ -708,11 +731,14 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
             <div
               className={`
                 absolute bottom-6 right-6 lg:bottom-8 lg:right-8 w-20 h-20 lg:w-24 lg:h-24
-                transition-all duration-300 ease-out
+                transition-all duration-300 ease-out cursor-pointer
                 ${isTransitioning ? "opacity-0 scale-90" : "opacity-100 scale-100"}
               `}
+              onMouseEnter={() => setIsSwatchHovered(true)}
+              onMouseLeave={() => setIsSwatchHovered(false)}
+              onClick={() => setIsLightboxOpen(true)}
               style={{
-                transform: `perspective(1000px) rotateX(${swatchTransform.rotateX}deg) rotateY(${swatchTransform.rotateY}deg) translateX(${swatchTransform.translateX}px) translateY(${swatchTransform.translateY}px)`,
+                transform: `perspective(1000px) rotateX(${swatchTransform.rotateX}deg) rotateY(${swatchTransform.rotateY}deg) translateX(${swatchTransform.translateX}px) translateY(${swatchTransform.translateY}px) scale(${swatchTransform.scale})`,
                 transformStyle: "preserve-3d",
               }}
             >
@@ -801,6 +827,69 @@ const ColorFinishPicker = ({ showColorGrid = true, showHeader = false }: ColorFi
           <p className="mt-8 text-center text-sm text-slate-400">
             Use arrow keys to navigate between colors
           </p>
+        </div>
+      )}
+
+      {/* Lightbox Modal */}
+      {isLightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn"
+          onClick={() => setIsLightboxOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-2xl mx-4 aspect-square max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl animate-scaleIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Large swatch image */}
+            <ImageWithFallback
+              src={selectedColor.swatchSrc}
+              alt={`${selectedColor.name} color swatch`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 800px"
+              loading="eager"
+            />
+            
+            {/* Bottom gradient overlay (25% from bottom) */}
+            <div className="absolute bottom-0 left-0 right-0 h-[25%] bg-gradient-to-t from-white via-white/95 to-transparent pointer-events-none" />
+            
+            {/* Color name on gradient */}
+            <div className="absolute bottom-6 left-0 right-0 px-6 text-center pointer-events-none">
+              <h3
+                className="text-3xl lg:text-4xl font-light tracking-tight text-slate-900"
+                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+              >
+                {selectedColor.name}
+              </h3>
+              <p className="text-sm font-medium text-slate-500 mt-1 uppercase tracking-wide">
+                {selectedColor.finishType === "classic"
+                  ? "Crystite Classic Collection"
+                  : "Crystite Crystal Collection"}
+              </p>
+            </div>
+            
+            {/* Close button */}
+            <button
+              type="button"
+              onClick={() => setIsLightboxOpen(false)}
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center text-slate-700 hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label="Close lightbox"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       )}
     </section>
