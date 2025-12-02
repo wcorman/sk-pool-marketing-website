@@ -322,7 +322,10 @@ const HeroSectionAlt = () => {
           />
           
           {/* Content - White Card */}
-          <div ref={floatingContainerRef} className="relative z-10 max-w-lg w-full bg-white rounded-2xl shadow-2xl p-8 lg:p-10 space-y-8 overflow-hidden">
+          <div
+            ref={floatingContainerRef}
+            className="relative z-10 w-full max-w-lg bg-white rounded-2xl shadow-2xl px-5 py-8 sm:px-8 lg:p-10 space-y-8 overflow-hidden -mx-2 sm:mx-0"
+          >
             <h1 className="text-4xl lg:text-5xl xl:text-5xl xl:leading-[60px] mb-4 lg:mb-0 font-bold text-gray-900 leading-tight">
             Owning a pool is the fun part,
               <span className="inline items-center gap-2 xl:leading-[60px] text-blue-600 font-extrabold">
