@@ -32,76 +32,75 @@ const LathamGridEmbed = () => {
       script.remove();
     });
 
-    // Add cache-busting query parameter to prevent caching issues
-    const cacheBuster = `?_t=${Date.now()}&_r=${Math.random().toString(36).substring(7)}`;
-    const currentUrl = window.location.href;
+    // Add cache-busting to the current URL as a query parameter
+    const url = new URL(window.location.href);
+    url.searchParams.set('_t', Date.now().toString());
+    url.searchParams.set('_r', Math.random().toString(36).substring(7));
+    const currentUrlWithCacheBuster = url.toString();
     
     try {
-      // Create the embed script with cache-busting
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = `https://www.lathamprositetool.com/wp-json/latham/v1/embed/3431/4/grid/${encodeURIComponent(currentUrl)}${cacheBuster}`;
-      
-      // Add error handler
-      script.onerror = () => {
-        console.error('Failed to load Latham grid embed script');
-        scriptLoadedRef.current = false;
+      // Use the original embed format exactly as in the carousel
+      // baseUrl + '/' + currentUrl (with cache-busting params)
+      const scriptTag = (function(w: any, d: any, t: any, u: any, a: any, m: any) {
+        a = d.createElement(t);
+        m = d.getElementsByTagName(t)[0];
+        a.async = 1;
+        // Use window.location.href format but with our cache-busted URL
+        a.src = u + '/' + currentUrlWithCacheBuster;
         
-        // Retry logic
-        if (retryCountRef.current < MAX_RETRIES) {
-          retryCountRef.current += 1;
-          timeoutIdRef.current = setTimeout(() => {
-            loadEmbedScript();
-          }, RETRY_DELAY * retryCountRef.current);
-        } else {
-          setHasError(true);
-          setIsLoading(false);
-        }
-      };
-
-      // Add load handler
-      script.onload = () => {
-        scriptLoadedRef.current = true;
-        setIsLoading(false);
-        setHasError(false);
-        
-        // Wait a bit to check if content was actually injected
-        setTimeout(() => {
-          if (containerRef.current && containerRef.current.innerHTML.trim() === '') {
-            // Content didn't load, try again if retries available
-            if (retryCountRef.current < MAX_RETRIES) {
-              scriptLoadedRef.current = false;
-              retryCountRef.current += 1;
-              timeoutIdRef.current = setTimeout(() => {
-                loadEmbedScript();
-              }, RETRY_DELAY * retryCountRef.current);
-            } else {
-              setHasError(true);
-              setIsLoading(false);
-            }
+        // Add error handler for retry logic
+        a.onerror = () => {
+          console.error('Failed to load Latham grid embed script, attempt:', retryCountRef.current + 1, 'URL:', a.src);
+          
+          if (retryCountRef.current < MAX_RETRIES) {
+            retryCountRef.current += 1;
+            scriptLoadedRef.current = false; // Allow retry
+            timeoutIdRef.current = setTimeout(() => {
+              loadEmbedScript();
+            }, RETRY_DELAY * retryCountRef.current);
+          } else {
+            console.error('All retry attempts failed');
+            scriptLoadedRef.current = true; // Mark as done to prevent more retries
+            setHasError(true);
+            setIsLoading(false);
           }
-        }, 2000);
-      };
+        };
 
-      // Insert the script
-      const firstScript = document.getElementsByTagName('script')[0];
-      if (firstScript && firstScript.parentNode) {
-        firstScript.parentNode.insertBefore(script, firstScript);
-      } else {
-        document.head.appendChild(script);
-      }
-
+        // Script loaded successfully
+        a.onload = () => {
+          console.log('Latham embed script loaded successfully');
+          scriptLoadedRef.current = true;
+          
+          // Hide loading indicator after script loads
+          // The embed content may render asynchronously
+          setTimeout(() => {
+            setIsLoading(false);
+            setHasError(false);
+          }, 3000);
+        };
+        
+        if (m && m.parentNode) {
+          m.parentNode.insertBefore(a, m);
+        } else {
+          d.head.appendChild(a);
+        }
+        
+        return a;
+      })(window, document, 'script', 'https://www.lathamprositetool.com/wp-json/latham/v1/embed/3431/4/grid', undefined, undefined);
+      
+      scriptLoadedRef.current = true;
       return true;
     } catch (error) {
       console.error('Error loading Latham grid:', error);
-      scriptLoadedRef.current = false;
       
       if (retryCountRef.current < MAX_RETRIES) {
         retryCountRef.current += 1;
+        scriptLoadedRef.current = false;
         timeoutIdRef.current = setTimeout(() => {
           loadEmbedScript();
         }, RETRY_DELAY * retryCountRef.current);
       } else {
+        scriptLoadedRef.current = true;
         setHasError(true);
         setIsLoading(false);
       }
