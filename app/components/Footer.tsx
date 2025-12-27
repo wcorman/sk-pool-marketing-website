@@ -5,7 +5,6 @@ import Image from "next/image";
 const footerLinks = [
   { label: "Home", href: "/" },
   { label: "Our Process", href: "/our-process" },
-  { label: "Pool Selection", href: "/pool-selection" },
   { label: "Why Fiberglass?", href: "/why-fiberglass" },
   { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "/faq" },
