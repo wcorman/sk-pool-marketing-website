@@ -7,6 +7,7 @@ type Service = {
   image: string;
   alt: string;
   comingSoon?: boolean;
+  href?: string;
 };
 
 const services: Service[] = [
@@ -19,7 +20,7 @@ const services: Service[] = [
     title: "Above-Ground Fiberglass Pools",
     image: "/images/above-ground.webp",
     alt: "Above ground pool in a sunny backyard",
-    comingSoon: true,
+    href: "/above-ground-pools",
   },
   {
     title: "Pool Maintenance",
@@ -72,32 +73,46 @@ const ServicesSection = () => {
 
         {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 relative">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <div className="relative h-64">
-                {service.comingSoon && (
-                  <span className="pointer-events-none absolute right-4 top-4 z-10 rounded-full bg-sky-500 px-4 py-1 text-sm font-semibold text-white shadow">
-                    Coming soon
-                  </span>
-                )}
-                <ImageWithFallback
-                  src={service.image}
-                  alt={service.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
+          {services.map((service, index) => {
+            const cardContent = (
+              <>
+                <div className="relative h-64">
+                  {service.comingSoon && (
+                    <span className="pointer-events-none absolute right-4 top-4 z-10 rounded-full bg-sky-500 px-4 py-1 text-sm font-semibold text-white shadow">
+                      Coming soon
+                    </span>
+                  )}
+                  <ImageWithFallback
+                    src={service.image}
+                    alt={service.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {service.title}
+                  </h3>
+                </div>
+              </>
+            );
+            const cardClassName =
+              "bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow";
+            return service.href ? (
+              <a
+                key={index}
+                href={service.href}
+                className={`block ${cardClassName} focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2`}
+              >
+                {cardContent}
+              </a>
+            ) : (
+              <div key={index} className={cardClassName}>
+                {cardContent}
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {service.title}
-                </h3>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Closing Statement */}
