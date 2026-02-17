@@ -14,7 +14,6 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { label: "Our Process", href: "/our-process" },
-  { label: "Above-Ground Pools", href: "/above-ground-pools" },
   { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
