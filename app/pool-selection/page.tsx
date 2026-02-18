@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
@@ -8,13 +8,9 @@ import LathamGridEmbed from "../components/LathamGridEmbed";
 
 const PoolSelectionPage = () => {
   const pathname = usePathname();
-  const [embedKey, setEmbedKey] = useState(0);
 
-  // Scroll to top and force remount when page loads or pathname changes
+  // Scroll to top when page loads or pathname changes
   useEffect(() => {
-    // Force remount of embed component
-    setEmbedKey((prev) => prev + 1);
-    
     // Use requestAnimationFrame to ensure scroll happens after render
     requestAnimationFrame(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -43,7 +39,7 @@ const PoolSelectionPage = () => {
         </div>
       </section>
 
-      <LathamGridEmbed key={embedKey} />
+      <LathamGridEmbed />
 
       <CTASection />
       <Footer />
