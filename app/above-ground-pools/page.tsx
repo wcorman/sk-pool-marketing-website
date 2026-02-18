@@ -58,6 +58,18 @@ const productLines = [
     image: "/images/lava/Lava.C1.1600-1200.png",
     imageAlt: "Lava above-ground pool",
   },
+  {
+    name: "White Wood",
+    description: "Canadian-made above-ground pool models. Contact us for specs, sizes, and options.",
+    image: "/images/whitewood/whitewood.C1.1600-1200.webp",
+    imageAlt: "White Wood above-ground pool",
+  },
+  {
+    name: "Newtown",
+    description: "Canadian-made above-ground pool models. Contact us for specs, sizes, and options.",
+    image: "/images/newtown/Newtown.C1.1600-1200.webp",
+    imageAlt: "Newtown above-ground pool",
+  },
 ];
 
 const AboveGroundPoolsPage = () => {
@@ -141,8 +153,8 @@ const AboveGroundPoolsPage = () => {
         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm shadow-slate-100 md:flex">
           <div className="relative h-72 w-full flex-shrink-0 md:aspect-[4/3] md:h-auto md:w-2/5">
             <Image
-              src="/images/downtown/Downtown Oval_C3 _1600-1200.webp"
-              alt="Downtown oval above-ground pool in a backyard"
+              src="/images/lava/Lava-smart.webp"
+              alt="Lava above-ground pool in a backyard"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 40vw"
@@ -196,9 +208,9 @@ const AboveGroundPoolsPage = () => {
       <section className="mx-auto mt-20 max-w-4xl px-6 pb-16 md:px-8">
         <h2 className="text-center text-3xl font-semibold text-slate-900">Our Above-Ground Pool Lines</h2>
         <p className="mt-3 text-center text-slate-600">
-          We offer Downtown and Lava — Canadian-made above-ground pools in a range of sizes and styles.
+          We offer Downtown, Lava, White Wood, and Newtown — Canadian-made above-ground pools in a range of sizes and styles.
         </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {productLines.map((line) => (
             <div
               key={line.name}
