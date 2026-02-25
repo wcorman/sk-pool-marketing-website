@@ -15,6 +15,7 @@ const services: Service[] = [
     title: "Inground Fiberglass Pools",
     image: "/images/Gamma (8).jpeg",
     alt: "Infinity pool by the sea",
+    href: "/pool-selection",
   },
   {
     title: "Above-Ground Fiberglass Pools",
